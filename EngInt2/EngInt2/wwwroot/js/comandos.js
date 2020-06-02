@@ -27,7 +27,7 @@ $("#btn_w").click(function () {
         $(this).removeClass("on");
 
         $(this).load("/Home/MandaComando",
-            { id: ID, command: "Desligar" }
+            { id: ID, comando: "Desligado" }
         );
 
     }
@@ -35,7 +35,7 @@ $("#btn_w").click(function () {
         $(this).addClass("on");
 
         $(this).load("/Home/MandaComando",
-            { id: ID, command: "Ligar" }
+            { id: ID, comando: "Ligado" }
         );
     }
 });
@@ -48,7 +48,7 @@ $("#btn_y").click(function () {
         $(this).removeClass("on");
 
         $(this).load("/Home/MandaComando",
-            { id: ID, command: "Desligar" }
+            { id: ID, comando: "Desligado" }
         );
 
     }
@@ -56,7 +56,7 @@ $("#btn_y").click(function () {
         $(this).addClass("on");
 
         $(this).load("/Home/MandaComando",
-            { id: ID, command: "Ligar" }
+            { id: ID, comando: "Ligado" }
         );
     }
 });
@@ -69,7 +69,7 @@ $("#btn_r").click(function () {
         $(this).removeClass("on");
 
         $(this).load("/Home/MandaComando",
-            { id: ID, command: "Desligar" }
+            { id: ID, comando: "Desligado" }
         );
 
     }
@@ -77,7 +77,7 @@ $("#btn_r").click(function () {
         $(this).addClass("on");
 
         $(this).load("/Home/MandaComando",
-            { id: ID, command: "Ligar" }
+            { id: ID, comando: "Ligado" }
         );
     }
 });
@@ -90,7 +90,7 @@ $("#btn_g").click(function () {
         $(this).removeClass("on");
 
         $(this).load("/Home/MandaComando",
-            { id: ID, command: "Desligar" }
+            { id: ID, comando: "Desligado" }
         );
 
     }
@@ -98,7 +98,7 @@ $("#btn_g").click(function () {
         $(this).addClass("on");
 
         $(this).load("/Home/MandaComando",
-            { id: ID, command: "Ligar" }
+            { id: ID, comando: "Ligado" }
         );
     }
 });

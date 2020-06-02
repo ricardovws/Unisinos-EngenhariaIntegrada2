@@ -49,19 +49,21 @@ namespace ColetorArduino
                 {
                     //Aqui o serviço pega a informação vinda da porta serial
 
-                    string data = serialPort.ReadLine();
+                    string info = serialPort.ReadLine();
 
 
                     //Depois a informação é tratada e segue em frente
-                    string[] dataToSplit = data.Split(',');
+                    string[] dataToSplit = info.Split(',');
 
                     string temp = null;
-                    string hum = null;
+                    string um = null;
+                    string umS = null;
 
                     try
                     {
                         temp = dataToSplit[0];
-                        hum = dataToSplit[1];
+                        um = dataToSplit[1];
+                        umS = dataToSplit[2];
                     }
 
                     catch (IndexOutOfRangeException _e)
@@ -72,7 +74,7 @@ namespace ColetorArduino
 
 
                     //Aqui as informações ourindas da portal serial são salvas no banco.
-                    SalvaNoBanco(id, temp, hum, connection, connectionString);
+                    SalvaNoBanco(id, temp, um, umS, connection, connectionString);
 
                     //Atualiza Id
                     id++;
@@ -82,7 +84,7 @@ namespace ColetorArduino
 
 
                     //Gera um .txt só para ver se está funcionando sem olhar o banco
-                    string[] _info_ = new string[] { "Temperatura e umidade relativa do ar são, respectivamente: " + data 
+                    string[] _info_ = new string[] { "Temperatura, umidade relativa do ar e umidade do solo, são, respectivamente: " + info
                         + ", e você pode visualizar todas as outras informações no banco de dados." };
                     string nomeDoArquivo = "arduinoInfos";
                     string extensaoDoArquivo = "txt";
@@ -139,24 +141,26 @@ namespace ColetorArduino
         }
 
 
-        private void SalvaNoBanco(int id, string temperatura, string umidade, MySqlConnection connection, string connectionString)
+        private void SalvaNoBanco(int id, string temperatura, string umidade, string umidadeSolo, MySqlConnection connection, string connectionString)
         {
             InformacaoDiretoDoArduino info = new InformacaoDiretoDoArduino();
             info.Id = id;
             info.Temperatura = temperatura;
             info.Umidade = umidade;
+            info.UmidadeSolo = umidadeSolo;
 
             try
             {
                 DBConnectionHelper();
 
-                string query = "INSERT INTO sensortemperaturaumidade (Id, Temperatura, Umidade) VALUES (@Id, @Temperatura, @Umidade)";
+                string query = "INSERT INTO sensortemperaturaumidade (Id, Temperatura, Umidade, UmidadeSolo) VALUES (@Id, @Temperatura, @Umidade, @UmidadeSolo)";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", info.Id);
                     command.Parameters.AddWithValue("@Temperatura", info.Temperatura);
                     command.Parameters.AddWithValue("@Umidade", info.Umidade);
+                    command.Parameters.AddWithValue("@UmidadeSolo", info.UmidadeSolo);
 
                     command.ExecuteNonQuery();
 

@@ -46,6 +46,7 @@ namespace EngInt2.Controllers
                 viewModel.Id = info.Id;
                 viewModel.Temperatura = info.Temperatura + " °C";
                 viewModel.Umidade = info.Umidade + " %";
+                viewModel.UmidadeSolo = info.UmidadeSolo + " %";
             }
 
             catch (NullReferenceException)
@@ -53,6 +54,7 @@ namespace EngInt2.Controllers
                 viewModel.Id = 0;
                 viewModel.Temperatura = "Infelizmente, nenhuma informação foi encontrada no banco de dados.";
                 viewModel.Umidade = "Infelizmente, nenhuma informação foi encontrada no banco de dados.";
+                viewModel.UmidadeSolo = "Infelizmente, nenhuma informação foi encontrada no banco de dados.";
             }
 
             return viewModel;
@@ -68,7 +70,7 @@ namespace EngInt2.Controllers
         public string MandaComando(int id, string comando)
         {
             var componente = _context.Comandos.First(x => x.Id == id);
-            if (comando == "Ligar")
+            if (comando == "Ligado")
             {
                 componente.Status = componente.Ligado;
                 componente.Status_Enum = Models.StatusEnum.Ligado;
