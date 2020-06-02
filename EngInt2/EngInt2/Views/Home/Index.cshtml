@@ -8,18 +8,18 @@
 <h2>Informações dos Sensores</h2>
 <hr />
 
+    <div class="environment_conditions_container">
 
-<div class="environment_conditions_container">
+        <div class="environment_conditions">
+            <p>Id:</p>
+            <p>Temperature:</p>
+            <p>Umidade relativa do ar:</p>
+        </div>
+        @await Html.PartialAsync("_SensorInfo", Model)
+        <p></p>
 
-    <div class="environment_conditions">
-        <p>Id:</p>
-        <p>Temperature:</p>
-        <p>Umidade relativa do ar:</p>
     </div>
-    @await Html.PartialAsync("_SensorInfo", Model)
-    <p></p>
 
-</div>
 
 <h2>LEDs</h2>
 <hr />
