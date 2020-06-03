@@ -57,13 +57,20 @@ namespace EngInt2.Data
             Comandos com4 = new Comandos
             {
                 Id = 4,
-                NomeComponente = "LED Verde",
+                NomeComponente = "Ventoinha",
                 Ligado = 7,
                 Desligado = 8,
                 Status = 8
             };
 
-            _context.AddRange(com1, com2, com3, com4);
+            Configuracoes conf = new Configuracoes()
+            {
+                Id = 1,
+                temperaturaIniciar = 25,
+                umidadeIniciar = 10
+            };
+
+            _context.AddRange(com1, com2, com3, com4, conf);
             _context.SaveChanges();
 
         }

@@ -2,14 +2,16 @@
 using EngInt2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EngInt2.Migrations
 {
     [DbContext(typeof(EngInt2Context))]
-    partial class EngInt2ContextModelSnapshot : ModelSnapshot
+    [Migration("20200603195025_newModel")]
+    partial class newModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,20 +36,6 @@ namespace EngInt2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Comandos");
-                });
-
-            modelBuilder.Entity("EngInt2.Models.Configuracoes", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("temperaturaIniciar");
-
-                    b.Property<int>("umidadeIniciar");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Configuracoes");
                 });
 
             modelBuilder.Entity("EngInt2.Models.SensorTemperaturaUmidade", b =>

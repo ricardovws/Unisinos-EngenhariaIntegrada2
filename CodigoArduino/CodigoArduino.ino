@@ -8,26 +8,26 @@ void loopDHT();           // Atualiza a leitura do sensor
 
 idDHT11 DHT11(idDHT11pin, idDHT11intNumber, dht11_wrapper);   //Instanciação do Objeto de Controle do Sensor
 
-//***Sobre os LED's***//
-int ledWhite = 12;
-int ledYellow = 11;
-int ledRed = 10;
-int ledGreen = 9;
+//***Sobre os componentes de acionamento***//
+int comp1 = 12; // Led branco - Sistema de exaustão
+int comp2 = 11; //LED amarelo - Sistema de Irrigação
+int comp3 = 10; //LED vermelho - Sistema de iluminação
+int comp4 = 9; //Ventoinha - Sistema de ventilação
 
-//***Sobre o sensor de umidade***//
+//***Sobre o sensor de umidade do solo (sensor HL-69)***//
 int umidadeSolo = 0;
 int analogPin = A2;
 
 void setup() {
 
   Serial.begin(9600);
-  pinMode(ledWhite, OUTPUT);
-  pinMode(ledYellow, OUTPUT);
-  pinMode(ledRed, OUTPUT);
-  pinMode(ledGreen, OUTPUT);
+  pinMode(comp1, OUTPUT);
+  pinMode(comp2, OUTPUT);
+  pinMode(comp3, OUTPUT);
+  pinMode(comp4, OUTPUT);
 }
 
-//Variaveis que irao conter os valores lidos no Sensor DHT11
+//Variaveis que irao conter os valores lidos no Sensor de temperatura e umidade do ar (DHT11)
 float temperaturaC;
 float temperaturaF;
 float temperaturaK;
@@ -56,40 +56,40 @@ void loop() {
 
   char order = Serial.read();
 
-  //White//
+  //Led branco - Sistema de exaustão//
   if (order == '1') {
-    digitalWrite(ledWhite, HIGH);
+    digitalWrite(comp1, HIGH);
   }
 
   if (order == '2') {
-    digitalWrite(ledWhite, LOW);
+    digitalWrite(comp1, LOW);
   }
 
-  //Yellow//
+  //LED amarelo - Sistema de Irrigação//
   if (order == '3') {
-    digitalWrite(ledYellow, HIGH);
+    digitalWrite(comp2, HIGH);
   }
 
   if (order == '4') {
-    digitalWrite(ledYellow, LOW);
+    digitalWrite(comp2, LOW);
   }
 
-  //Red//
+  //LED vermelho - Sistema de iluminação//
   if (order == '5') {
-    digitalWrite(ledRed, HIGH);
+    digitalWrite(comp3, HIGH);
   }
 
   if (order == '6') {
-    digitalWrite(ledRed, LOW);
+    digitalWrite(comp3, LOW);
   }
 
-  //Green//
+  //Ventoinha - Sistema de ventilação//
   if (order == '7') {
-    digitalWrite(ledGreen, HIGH);
+    digitalWrite(comp4, HIGH);
   }
 
   if (order == '8') {
-    digitalWrite(ledGreen, LOW);
+    digitalWrite(comp4, LOW);
   }
 
 }

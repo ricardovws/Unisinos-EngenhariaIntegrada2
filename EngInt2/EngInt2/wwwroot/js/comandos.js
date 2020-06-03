@@ -40,25 +40,20 @@ $("#btn_w").click(function () {
     }
 });
 
-$("#btn_y").click(function () {
-    var ID = 2;
+$("#Salvar_temp").click(function () {
+    var url = "/Home/SalvarConfiguracaoTemperatura";
+    var temperatura = $("#temp").val();
+    $.post(url, { temperatura: temperatura });
+    $("#mensagemTempOk").html("Temperatura salva!").fadeIn(500)
+        .delay(1000).fadeOut(500);
+});
 
-   
-    if ($(this).hasClass("on")) {
-        $(this).removeClass("on");
-
-        $(this).load("/Home/MandaComando",
-            { id: ID, comando: "Desligado" }
-        );
-
-    }
-    else {
-        $(this).addClass("on");
-
-        $(this).load("/Home/MandaComando",
-            { id: ID, comando: "Ligado" }
-        );
-    }
+$("#Salvar_umi").click(function () {
+    var url = "/Home/SalvarConfiguracaoUmidade";
+    var umidade = $("#umi").val();
+    $.post(url, { umidade: umidade });
+    $("#mensagemTempOk").html("Umidade salva!").fadeIn(500)
+        .delay(1000).fadeOut(500);
 });
 
 $("#btn_r").click(function () {
@@ -82,23 +77,3 @@ $("#btn_r").click(function () {
     }
 });
 
-$("#btn_g").click(function () {
-    var ID = 4;
-
-    
-    if ($(this).hasClass("on")) {
-        $(this).removeClass("on");
-
-        $(this).load("/Home/MandaComando",
-            { id: ID, comando: "Desligado" }
-        );
-
-    }
-    else {
-        $(this).addClass("on");
-
-        $(this).load("/Home/MandaComando",
-            { id: ID, comando: "Ligado" }
-        );
-    }
-});

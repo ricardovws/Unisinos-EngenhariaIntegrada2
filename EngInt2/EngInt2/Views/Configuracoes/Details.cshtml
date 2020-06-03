@@ -1,0 +1,30 @@
+﻿@model EngInt2.Models.Configuracoes
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Configuracoes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.temperaturaIniciar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.temperaturaIniciar)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.umidadeIniciar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.umidadeIniciar)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

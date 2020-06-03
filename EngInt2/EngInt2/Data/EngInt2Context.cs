@@ -17,5 +17,7 @@ namespace EngInt2.Models
         public DbSet<SensorTemperaturaUmidade> SensorTemperaturaUmidade { get; set; }
 
         public DbSet<Comandos> Comandos { get; set; }
+
+        public DbSet<EngInt2.Models.Configuracoes> Configuracoes { get; set; }
     }
 }

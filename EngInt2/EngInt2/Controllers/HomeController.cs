@@ -47,6 +47,7 @@ namespace EngInt2.Controllers
                 viewModel.Temperatura = info.Temperatura + " °C";
                 viewModel.Umidade = info.Umidade + " %";
                 viewModel.UmidadeSolo = info.UmidadeSolo + " %";
+               
             }
 
             catch (NullReferenceException)
@@ -58,6 +59,37 @@ namespace EngInt2.Controllers
             }
 
             return viewModel;
+        }
+
+        private void VerificaStatusComponentes()
+        {
+            var param = _context.Configuracoes.FirstOrDefault();
+            var temperatura = param.temperaturaIniciar;
+            var umidadeSolo = param.umidadeIniciar;
+
+
+            var temp = temperatura;
+            
+            var infos = _context.SensorTemperaturaUmidade.LastOrDefault();
+            if(int.Parse(infos.Temperatura) >= temp)
+            {
+                MandaComando(4, "Ligado");
+            }
+            else
+            {
+                MandaComando(4, "Desligado");
+            }
+
+            var umiS = umidadeSolo;
+
+            if (int.Parse(infos.UmidadeSolo) >= umiS)
+            {
+                MandaComando(2, "Ligado");
+            }
+            else
+            {
+                MandaComando(2, "Desligado");
+            }
         }
 
         public object AtualizaDadosSensor()
@@ -85,6 +117,24 @@ namespace EngInt2.Controllers
             _context.SaveChanges();
 
             return comando;
+        }
+
+        [HttpPost]
+        public void SalvarConfiguracaoTemperatura(int temperatura)
+        {
+            var temp = _context.Configuracoes.FirstOrDefault();
+            temp.temperaturaIniciar = temperatura;
+            _context.Configuracoes.Update(temp);
+            _context.SaveChanges();
+        }
+
+        [HttpPost]
+        public void SalvarConfiguracaoUmidade(int umidade)
+        {
+            var umi = _context.Configuracoes.FirstOrDefault();
+            umi.umidadeIniciar = umidade;
+            _context.Configuracoes.Update(umi);
+            _context.SaveChanges();
         }
 
         public IActionResult About()
