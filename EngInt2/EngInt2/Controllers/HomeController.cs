@@ -69,7 +69,17 @@ namespace EngInt2.Controllers
                     MandaComando(2, "Desligado");
                 }
 
+                //Aqui ele confere se mantém ou não a iluminação ativada.
+                var atualmente = DateTime.Now;
 
+                if (comparar.horarioParaLigar <= atualmente && atualmente <= comparar.horarioParaDesligar)
+                {
+                    MandaComando(3, "Ligado");
+                }
+                else
+                {
+                    MandaComando(3, "Desligado");
+                }
             }
 
             catch (NullReferenceException)
@@ -81,37 +91,6 @@ namespace EngInt2.Controllers
             }
 
             return viewModel;
-        }
-
-        private void VerificaStatusComponentes()
-        {
-            var param = _context.Configuracoes.FirstOrDefault();
-            var temperatura = param.temperaturaIniciar;
-            var umidadeSolo = param.umidadeIniciar;
-
-
-            var temp = temperatura;
-            
-            var infos = _context.SensorTemperaturaUmidade.LastOrDefault();
-            if(int.Parse(infos.Temperatura) >= temp)
-            {
-                MandaComando(4, "Ligado");
-            }
-            else
-            {
-                MandaComando(4, "Desligado");
-            }
-
-            var umiS = umidadeSolo;
-
-            if (int.Parse(infos.UmidadeSolo) >= umiS)
-            {
-                MandaComando(2, "Ligado");
-            }
-            else
-            {
-                MandaComando(2, "Desligado");
-            }
         }
 
         public object AtualizaDadosSensor()
@@ -140,6 +119,23 @@ namespace EngInt2.Controllers
 
             return comando;
         }
+
+
+        [HttpPost]
+        public void SalvarTempo(int tempoSegundos)
+        {
+            var horarioAgora = DateTime.Now;
+            var horarioParaLigar = horarioAgora;
+            var horarioParaDesligar = horarioAgora.AddSeconds(tempoSegundos);
+
+            var config = _context.Configuracoes.First();
+            config.horarioAgora = horarioAgora;
+            config.horarioParaLigar = horarioParaLigar;
+            config.horarioParaDesligar = horarioParaDesligar;
+            _context.Configuracoes.Update(config);
+            _context.SaveChanges();
+        }
+
 
         [HttpPost]
         public void SalvarConfiguracaoTemperatura(int temperatura)

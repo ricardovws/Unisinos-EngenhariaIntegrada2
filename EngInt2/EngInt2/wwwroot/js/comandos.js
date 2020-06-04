@@ -17,8 +17,7 @@ $(window).on("load", function () {
 
 
 
-//Cada botão envia um comando on/off para a função "MandaComando" presente na controller
-
+//Botão para ligar exaustão
 $("#btn_w").click(function () {
     var ID = 1;
 
@@ -40,6 +39,7 @@ $("#btn_w").click(function () {
     }
 });
 
+//Botão para salvar temperatura
 $("#Salvar_temp").click(function () {
     var url = "/Home/SalvarConfiguracaoTemperatura";
     var temperatura = $("#temp").val();
@@ -48,28 +48,7 @@ $("#Salvar_temp").click(function () {
         .delay(1000).fadeOut(500);
 });
 
-$("#btn_v").click(function () {
-    var ID = 4;
-
-
-    if ($(this).hasClass("on")) {
-        $(this).removeClass("on");
-
-        $(this).load("/Home/MandaComando",
-            { id: ID, comando: "Desligado" }
-        );
-
-    }
-    else {
-        $(this).addClass("on");
-
-        $(this).load("/Home/MandaComando",
-            { id: ID, comando: "Ligado" }
-        );
-    }
-});
-
-
+//Botão para salvar umidade
 $("#Salvar_umi").click(function () {
     var url = "/Home/SalvarConfiguracaoUmidade";
     var umidade = $("#umi").val();
@@ -78,6 +57,18 @@ $("#Salvar_umi").click(function () {
         .delay(1000).fadeOut(500);
 });
 
+
+//Botão para salvar tempo de iluminação
+$("#Salvar_tempo").click(function () {
+    var url = "/Home/SalvarTempo";
+    var tempo = $("#tempo").val();
+    $.post(url, { tempoSegundos: tempo });
+    $("#mensagemTempoOk").html("Intervalor de tempo salvo!").fadeIn(500)
+        .delay(1000).fadeOut(500);
+});
+
+
+//Botão para ligar iluminação
 $("#btn_r").click(function () {
     var ID = 3;
 
