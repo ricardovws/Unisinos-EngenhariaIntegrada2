@@ -50,7 +50,14 @@ void loop() {
   delay: (10000);
 
   //(Temperatura, Umidade e Umidade do solo)
-  Serial.println(String(temperaturaC) + "," + String(umidade) + "," + String(umidadeSolo));
+
+  int _temperaturaC = (int)temperaturaC;
+  int _umidade = (int)umidade;
+  int _umidadeSolo = (int)umidadeSolo;
+
+  Serial.println(String(_temperaturaC) + "," + String(_umidade) + "," + String(_umidadeSolo));
+  
+  //Serial.println(String(temperaturaC) + "," + String(umidade) + "," + String(umidadeSolo));
 
   //Serial.println("Temperatura: " + String(temperaturaC) + ", Umidade relativa do ar: " + String(umidade) + ", Umidade do solo: " + String(umidadeSolo));
 

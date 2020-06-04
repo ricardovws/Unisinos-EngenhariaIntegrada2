@@ -1,9 +1,6 @@
 ﻿window.setInterval(function () {
 
     $("#dataFromSensors").load("/Home/AtualizaDadosSensor");
-}, 3000);
+}, 5000);
 
-window.setInterval(function () {
 
-    $("#dataFromSensors").load("/Home/AtualizaDadosSensor");
-}, 3000);

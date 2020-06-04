@@ -48,6 +48,28 @@ $("#Salvar_temp").click(function () {
         .delay(1000).fadeOut(500);
 });
 
+$("#btn_v").click(function () {
+    var ID = 4;
+
+
+    if ($(this).hasClass("on")) {
+        $(this).removeClass("on");
+
+        $(this).load("/Home/MandaComando",
+            { id: ID, comando: "Desligado" }
+        );
+
+    }
+    else {
+        $(this).addClass("on");
+
+        $(this).load("/Home/MandaComando",
+            { id: ID, comando: "Ligado" }
+        );
+    }
+});
+
+
 $("#Salvar_umi").click(function () {
     var url = "/Home/SalvarConfiguracaoUmidade";
     var umidade = $("#umi").val();

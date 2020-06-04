@@ -19,7 +19,7 @@ namespace ColetorArduino
 
         public ArduinoInfos()
         {
-            _timer = new Timer(3000) { AutoReset = true };
+            _timer = new Timer(5000) { AutoReset = true };
 
             _timer.Elapsed += (sender, eventArgs) =>
 
@@ -73,7 +73,7 @@ namespace ColetorArduino
                     }
 
 
-                    //Aqui as informações ourindas da portal serial são salvas no banco.
+                    //Aqui as informações oriundas da portal serial são salvas no banco.
                     SalvaNoBanco(id, temp, um, umS, connection, connectionString);
 
                     //Atualiza Id
@@ -103,12 +103,12 @@ namespace ColetorArduino
         {
             try
             {
-                DBConnectionHelper();
-
+    
                 string query = "SELECT * FROM comandos";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
+                    DBConnectionHelper(); ////
                     var reader = command.ExecuteReader();
 
                     while (reader.Read())
@@ -133,6 +133,7 @@ namespace ColetorArduino
                     }
 
                 }
+                connection.Close();//
             }
             catch (Exception e)
             {
@@ -148,15 +149,16 @@ namespace ColetorArduino
             info.Temperatura = temperatura;
             info.Umidade = umidade;
             info.UmidadeSolo = umidadeSolo;
-
+            
             try
             {
-                DBConnectionHelper();
 
                 string query = "INSERT INTO sensortemperaturaumidade (Id, Temperatura, Umidade, UmidadeSolo) VALUES (@Id, @Temperatura, @Umidade, @UmidadeSolo)";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
+                    DBConnectionHelper(); ////
+
                     command.Parameters.AddWithValue("@Id", info.Id);
                     command.Parameters.AddWithValue("@Temperatura", info.Temperatura);
                     command.Parameters.AddWithValue("@Umidade", info.Umidade);
@@ -165,8 +167,9 @@ namespace ColetorArduino
                     command.ExecuteNonQuery();
 
                     Console.WriteLine("Foi salvo no banco de dados!");
-                }
 
+                }
+                connection.Close();//
             }
 
             catch (Exception e)
@@ -181,18 +184,20 @@ namespace ColetorArduino
 
         private void AtualizarId()
         {
-            DBConnectionHelper();
+            //DBConnectionHelper();
 
             string query = "SELECT MAX(Id) FROM sensortemperaturaumidade";
 
             using (MySqlCommand command = new MySqlCommand(query, connection))
             {
+                DBConnectionHelper(); ////
 
                 var novoId = (int)command.ExecuteScalar();
 
                 id = novoId;
 
             }
+
         }
 
         private void DBConnectionHelper()

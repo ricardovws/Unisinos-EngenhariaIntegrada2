@@ -47,7 +47,29 @@ namespace EngInt2.Controllers
                 viewModel.Temperatura = info.Temperatura + " °C";
                 viewModel.Umidade = info.Umidade + " %";
                 viewModel.UmidadeSolo = info.UmidadeSolo + " %";
-               
+
+                //Confere os dados do sensor e verifica se precisa acionar algum componente:
+                //Fazer método para melhorar esse código!!!
+                var comparar = _context.Configuracoes.First();
+                if (comparar.temperaturaIniciar <= int.Parse(info.Temperatura))
+                {
+                    MandaComando(4, "Ligado");
+                }
+                else
+                {
+                    MandaComando(4, "Desligado");
+                }
+
+                if(comparar.umidadeIniciar <= int.Parse(info.UmidadeSolo))
+                {
+                    MandaComando(2, "Ligado");
+                }
+                else
+                {
+                    MandaComando(2, "Desligado");
+                }
+
+
             }
 
             catch (NullReferenceException)
