@@ -11,8 +11,11 @@ namespace EngInt2.Models
         public int temperaturaIniciar { get; set; }
         public int umidadeIniciar { get; set; }
 
-        public DateTime horarioAgora { get; set; }
-        public DateTime horarioParaLigar { get; set; }
-        public DateTime horarioParaDesligar { get; set; }
+
+        public bool statusReferencia { get; set; }
+        public int tempoLigado { get; set; }
+        public int tempoDesligado { get; set; }
+        public DateTime horarioInicial { get; set; } //antes era horarioParaLigar
+        public DateTime horarioFinal { get; set; } //horarioParaDesligar
     }
 }

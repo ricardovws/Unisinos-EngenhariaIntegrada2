@@ -61,8 +61,9 @@ $("#Salvar_umi").click(function () {
 //Botão para salvar tempo de iluminação
 $("#Salvar_tempo").click(function () {
     var url = "/Home/SalvarTempo";
-    var tempo = $("#tempo").val();
-    $.post(url, { tempoSegundos: tempo });
+    var tempoLigado = $("#tempoLigado").val();
+    var tempoDesligado = $("#tempoDesligado").val();
+    $.post(url, { tempoLigado: tempoLigado, tempoDesligado: tempoDesligado });
     $("#mensagemTempoOk").html("Intervalor de tempo salvo!").fadeIn(500)
         .delay(1000).fadeOut(500);
 });

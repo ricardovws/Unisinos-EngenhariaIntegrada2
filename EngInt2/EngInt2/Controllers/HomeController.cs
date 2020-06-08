@@ -72,13 +72,38 @@ namespace EngInt2.Controllers
                 //Aqui ele confere se mantém ou não a iluminação ativada.
                 var atualmente = DateTime.Now;
 
-                if (comparar.horarioParaLigar <= atualmente && atualmente <= comparar.horarioParaDesligar)
+               //
+
+                if (comparar.horarioInicial <= atualmente && atualmente <= comparar.horarioFinal)
                 {
-                    MandaComando(3, "Ligado");
+                    if(comparar.statusReferencia == true)
+                    {
+                        MandaComando(3, "Ligado");
+                    }
+                    else
+                    {
+                        MandaComando(3, "Desligado");
+                    }
                 }
                 else
                 {
-                    MandaComando(3, "Desligado");
+                    if(comparar.statusReferencia == true)
+                    {
+                        comparar.statusReferencia = false;
+                        comparar.horarioInicial = DateTime.Now;
+                        comparar.horarioFinal = comparar.horarioInicial.AddSeconds(comparar.tempoDesligado);
+                        _context.Configuracoes.Update(comparar);
+                        _context.SaveChanges();
+                    }
+                    else
+                    {
+                        comparar.statusReferencia = true;
+                        comparar.horarioInicial = DateTime.Now;
+                        comparar.horarioFinal = comparar.horarioInicial.AddSeconds(comparar.tempoLigado);
+                        _context.Configuracoes.Update(comparar);
+                        _context.SaveChanges();
+                    }
+                   
                 }
             }
 
@@ -122,16 +147,23 @@ namespace EngInt2.Controllers
 
 
         [HttpPost]
-        public void SalvarTempo(int tempoSegundos)
+        public void SalvarTempo(int tempoLigado, int tempoDesligado)
         {
             var horarioAgora = DateTime.Now;
-            var horarioParaLigar = horarioAgora;
-            var horarioParaDesligar = horarioAgora.AddSeconds(tempoSegundos);
+            var horarioInicial = horarioAgora;
+            var horarioFinal = horarioAgora.AddSeconds(tempoLigado);
 
             var config = _context.Configuracoes.First();
-            config.horarioAgora = horarioAgora;
-            config.horarioParaLigar = horarioParaLigar;
-            config.horarioParaDesligar = horarioParaDesligar;
+
+            config.statusReferencia = true;
+            config.tempoLigado = tempoLigado;
+            config.tempoDesligado = tempoDesligado;
+
+
+            config.horarioInicial = horarioInicial;
+            config.horarioFinal = horarioFinal;
+            
+            
             _context.Configuracoes.Update(config);
             _context.SaveChanges();
         }
