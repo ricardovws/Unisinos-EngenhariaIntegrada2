@@ -1,4 +1,4 @@
-# Unisinos-EngenhariaIntegrada2
+# Unisinos-Engenharia Integrada 2
 Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do curso de Engenharia Mecânica da Universidade do Vale dos Sinos.
 
 ### A proposta da disciplina é desenvolver uma solução envolvendo automação, aplicando os conhecimentos adquiridos até o momento no curso
