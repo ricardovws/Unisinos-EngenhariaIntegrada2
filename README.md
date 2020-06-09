@@ -8,12 +8,17 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
 
  Não estarão contidos aqui.
  
- ### Como funciona?
+ ## Como funciona?
  
  Abaixo está uma imagem mostrando o funcionamento básico do sistema de automação da estufa:
  
  ![](imagens/sistema_basico.png)
  
- ##### Explicações da imagem. #####
- Explicações da imagem.
+ ## Arduino Uno.
+ DIvagações.
  
+ ## Software de Serviço (ColetorArduino).
+ DIvagações.
+
+## Sistema web para controle total (EngInt2).
+ DIvagações.
