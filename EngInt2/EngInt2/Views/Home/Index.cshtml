@@ -15,10 +15,18 @@
             <p>Temperatura:</p>
             <p>Umidade relativa do ar:</p>
             <p>Umidade do solo:</p>
+
+            <p>Status do sistema de exaustão:</p>
+
+            <p>Temperatura para iniciar ventilação:</p>
+            <p>Umidade mínima do solo para iniciar irrigação:</p>
+            <p>Tempo de iluminação ligada:</p>
+            <p>Tempo de iluminação desligada:</p>
         </div>
         @await Html.PartialAsync("_SensorInfo", Model)
         <p></p>
     </div>
+    <p></p>
     <button id="edit_config" class="btn btn-info btn-xs">Editar configurações</button>
 
 <div class="_container box">
@@ -33,10 +41,10 @@
             <h3 class="color-component-r">Sistema de Iluminação (LED Vermelho)</h3>
             <p>Digite aqui o intervalo de tempo, em segundos, para ocorrer a iluminação:</p>
             <label for="tempoLigado">Ligado:</label>
-            <input type="number" id="tempoLigado" name="tempoLigado" class="littleInput" /><br />
+            <input type="number" id="tempoLigado" name="tempoLigado" class="littleInput" /> s<br />
 
             <label for="tempoDesligado">Desligado:</label>
-            <input type="number" id="tempoDesligado" name="tempoDesligado" class="littleInput" /><br />
+            <input type="number" id="tempoDesligado" name="tempoDesligado" class="littleInput" /> s<br />
 
 
             <input class="btn btn-success btn-sm" type="submit" value="Salvar" id="Salvar_tempo" />
@@ -50,7 +58,7 @@
         <div class="commandButton">
             <h3 class="color-component-g">Sistema de Ventilação (Ventoinha)</h3>
             <label for="temp">Digite aqui a temperatura mínima para iniciar a ventilação:</label>
-            <input type="number" id="temp" name="temp" class="littleInput" /><br />
+            <input type="number" id="temp" name="temp" class="littleInput" /> °C<br />
             <input class="btn btn-success btn-sm" type="submit" value="Salvar" id="Salvar_temp" />
             <p id="mensagemTempOk"></p>
         </div>
@@ -58,7 +66,7 @@
         <div>
             <h3 class="color-component-y">Sistema de Irrigação (LED Amarelo)</h3>
             <label for="umi">Digite aqui a umidade mínima para iniciar a irrigação:</label>
-            <input type="number" id="umi" name="umi" class="littleInput" /><br />
+            <input type="number" id="umi" name="umi" class="littleInput" /> %<br />
             <input class="btn btn-success btn-sm" type="submit" value="Salvar" id="Salvar_umi" />
             <p id="mensagemUmiOk"></p>
         </div>

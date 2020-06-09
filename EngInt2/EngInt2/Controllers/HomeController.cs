@@ -48,6 +48,14 @@ namespace EngInt2.Controllers
                 viewModel.Umidade = info.Umidade + " %";
                 viewModel.UmidadeSolo = info.UmidadeSolo + " %";
 
+                viewModel.Status1 = _context.Comandos.FirstOrDefault(x => x.Id == 1).Status_Enum;
+
+                viewModel.TemperaturaIniciarVentilacao = _context.Configuracoes.FirstOrDefault().temperaturaIniciar.ToString() + " °C";
+                viewModel.UmidadeIniciarIrrigacao = _context.Configuracoes.FirstOrDefault().umidadeIniciar.ToString() + " %";
+                viewModel.TempoLigado = _context.Configuracoes.FirstOrDefault().tempoLigado.ToString() + " s";
+                viewModel.TempoDesligado = _context.Configuracoes.FirstOrDefault().tempoDesligado.ToString() + " s";
+
+
                 //Confere os dados do sensor e verifica se precisa acionar algum componente:
                 //Fazer método para melhorar esse código!!!
                 var comparar = _context.Configuracoes.First();
@@ -60,7 +68,7 @@ namespace EngInt2.Controllers
                     MandaComando(4, "Desligado");
                 }
 
-                if(comparar.umidadeIniciar <= int.Parse(info.UmidadeSolo))
+                if(comparar.umidadeIniciar >= int.Parse(info.UmidadeSolo))
                 {
                     MandaComando(2, "Ligado");
                 }

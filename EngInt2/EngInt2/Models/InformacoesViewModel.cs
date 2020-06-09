@@ -16,5 +16,10 @@ namespace EngInt2.Models
         public StatusEnum Status2 { get; set; }
         public StatusEnum Status3 { get; set; }
         public StatusEnum Status4 { get; set; }
+
+        public string TemperaturaIniciarVentilacao { get; set; }
+        public string UmidadeIniciarIrrigacao { get; set; }
+        public string TempoLigado { get; set; }
+        public string TempoDesligado { get; set; }
     }
 }

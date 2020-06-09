@@ -16,7 +16,10 @@ $(window).on("load", function () {
 });
 
 //Habilita-desabilita as opções edição de configuração
-$("#edit_config").click(function () {toggle()});
+$("#edit_config").click(function () {
+
+    $(".box").toggle();
+});
 
 
 //Botão para ligar exaustão
