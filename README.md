@@ -12,7 +12,7 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
  
  Abaixo está uma imagem mostrando o funcionamento básico do sistema de automação da estufa:
  
- ![](imagens/sistema_basico.png 100)
+ ![](imagens/sistema_basico.png 100x20)
  
  ##### Explicações da imagem. #####
  Explicações da imagem.
