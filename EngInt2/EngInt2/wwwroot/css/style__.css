@@ -4,6 +4,11 @@
 
 ._container {
     display: block;
+
+}
+
+.box{
+    display: none;
 }
 
 .environment_conditions {
@@ -42,13 +47,19 @@
 }
 
 button {
-    color: black;
+    color: white;
     background-color: red;
     border-style: solid;
     border-radius: .25em;
     margin-left: 1.25em;
+        
 }
 
 .on {
     background-color: green;
+
+}
+
+.littleInput {
+    width: 4em;
 }

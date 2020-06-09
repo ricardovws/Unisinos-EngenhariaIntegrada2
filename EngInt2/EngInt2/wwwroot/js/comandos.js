@@ -15,6 +15,8 @@ $(window).on("load", function () {
     }
 });
 
+//Habilita-desabilita as opções edição de configuração
+$("#edit_config").click(function () {toggle()});
 
 
 //Botão para ligar exaustão
@@ -53,7 +55,7 @@ $("#Salvar_umi").click(function () {
     var url = "/Home/SalvarConfiguracaoUmidade";
     var umidade = $("#umi").val();
     $.post(url, { umidade: umidade });
-    $("#mensagemTempOk").html("Umidade salva!").fadeIn(500)
+    $("#mensagemUmiOk").html("Umidade salva!").fadeIn(500)
         .delay(1000).fadeOut(500);
 });
 
@@ -69,25 +71,4 @@ $("#Salvar_tempo").click(function () {
 });
 
 
-//Botão para ligar iluminação
-$("#btn_r").click(function () {
-    var ID = 3;
-
-   
-    if ($(this).hasClass("on")) {
-        $(this).removeClass("on");
-
-        $(this).load("/Home/MandaComando",
-            { id: ID, comando: "Desligado" }
-        );
-
-    }
-    else {
-        $(this).addClass("on");
-
-        $(this).load("/Home/MandaComando",
-            { id: ID, comando: "Ligado" }
-        );
-    }
-});
 
