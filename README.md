@@ -14,6 +14,7 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
  
  <img src="imagens/sistema_basico.png" witdh:"30">
 
+ ![](imagens/sistema_basico.png)
  
  ##### Explicações da imagem. #####
  Explicações da imagem.
