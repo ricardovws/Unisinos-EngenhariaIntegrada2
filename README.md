@@ -36,8 +36,12 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
   
  O programa desenvolvido no Arduino, está disponível [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/blob/master/CodigoArduino/CodigoArduino.ino).
  
- ## Software de Serviço (ColetorArduino).
+ ## Software de Serviço (ColetorArduino)
+ Esse sistema é uma aplicação console desenvolvida em C# que se comporta como um serviço do windows. A aplicação se executa automaticamente em um intervalo pré-definido de tempo, abrindo uma conexão com a portal serial do Arduino, recebendo e enviando informações para ela. As informações vindas da porta serial, são tratadas e salvas no banco de dados. Quais informações? Todas que são lidas pelos sensores. São elas: Temperatura ambiente, umidade relativa do ar e umidade do solo. A aplicação também envia comandos de consulta ao banco de dados, lendo os dados de status de cada sistema. Os status são coletados do banco de dados, e logo após, tratados e enviados para a porta serial do Arduino. Assim, ocorre o controle do Arduino via banco de dados utilizando o software de serviço.
+ O código do software de serviço pode ser visto [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/tree/master/ColetorArduino).
+
+ ## Banco de dados 
  DIvagações.
 
-## Sistema web para controle total (EngInt2).
+ ## Sistema web para controle total (EngInt2)
  DIvagações.
