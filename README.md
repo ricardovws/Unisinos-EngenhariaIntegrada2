@@ -32,7 +32,7 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
  E por fim, uma ventoinha representa os ventiladores que serão acionados caso uma determinada temperatura for atingida, fazendo duas funções, simultaneamente: 
  
  * Troca de temperatura por convexão forçada
- * Auxilio no movimento e troca de ar dentro da estufa com o ambiente, melhorando a oxigenação, que é essencial para as plantas cultivadas.
+ * Auxilio no movimento e troca de ar dentro da estufa (volume útil aproximado de 1m³) com o ambiente, melhorando a oxigenação, que é essencial para as plantas cultivadas.
   
  O programa desenvolvido no Arduino, está disponível [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/blob/master/CodigoArduino/CodigoArduino.ino).
  
