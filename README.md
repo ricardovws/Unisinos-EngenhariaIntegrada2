@@ -14,7 +14,7 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
  
  ![](imagens/sistema_basico.png)
  
- ## Arduino Uno.
+ ## Arduino Uno
  O Arduino será responsável por hospedar todos os sensores e componentes de acionamento dos sistemas de irrigação, iluminação, ventilação e exaustão. Além disso, o seu microprocessador irá executar um programa que coleta os dados dos sensores e os envia para uma porta de comunicação serial. Através desta mesma porta serial, o programa também insere dados de entrada, fazendo com que os sistemas já citados, sejam acionados de forma individual. Como o Arduino dispõe de um cabo USB para comunicação por hardware, esse cabo é conectado em um computador, fazendo a comunicação entre ambos. Abaixo está o desenho do projeto de hardware do Arduino:
  
  ![](imagens/arduino__hardware.png)
@@ -42,7 +42,7 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
 O código do software de serviço pode ser visto [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/tree/master/ColetorArduino).
 
  ## Banco de dados 
- DIvagações.
-
+ No banco de dados são salvos os dados oriundos da porta serial do Arduino, através do ColetorArduino. O mesmo, faz consultas no banco de dados, de modo a inserir informações na mesma porta serial, possibilitando a comunicação com o Arduino. Os dados que o software de serviço consulta, são salvos pelo sistema web para controle total no banco de dados.
+ 
  ## Sistema web para controle total (EngInt2)
  DIvagações.
