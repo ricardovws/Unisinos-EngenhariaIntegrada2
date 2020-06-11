@@ -45,4 +45,14 @@ O código do software de serviço pode ser visto [aqui](https://github.com/ricar
  No banco de dados são salvos os dados oriundos da porta serial do Arduino, através do ColetorArduino. O mesmo, faz consultas no banco de dados, de modo a inserir informações na mesma porta serial, possibilitando a comunicação com o Arduino. Os dados que o software de serviço consulta, são salvos pelo sistema web para controle total no banco de dados.
  
  ## Sistema web para controle total (EngInt2)
- DIvagações.
+ O sistema EngInt2 faz consultas no banco de dados, mostrando ao usuário informações obtidas pelos sensores:bla, bla, bla, bla.
+ Informações de configuração sobre a automação da estufa, que são: bla, bla, bla, são configuradas pelo usuário, através de uma página de confugurações que é habilitada ao clicar no botão "mostrar configurações". E logo após isso, são salvas no banco de dados.
+ 
+ Página inicial:
+ 
+ Página com edição de configurações habilitada:
+ 
+ 
+ A lógica que determina o tempo de ligado/desligado do sistema de iluminação, momento para ativar ou desativar o sistema de irrigação e ventilação, e acionar ou não o sistema de exaustão, está toda contida no código do EngInt2, que pode ser encontrado [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/tree/master/EngInt2).
+ 
+ 
