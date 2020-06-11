@@ -31,14 +31,28 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
  * 18W de potência
  * Vazão de 160m³/h
  
+ ### #2
  Da mesma forma, o sistema de irrigação será representado pelo LED amarelo. Quando o LED estiver aceso, representa o acionamento do relé que controla uma válvula solenóide que permite, ou não, a passagem da água para a irrigação das plantas.
  
+ ### #3
  O LED vermelho representa o sistema de iluminação, que numa aplicação real, seria o relé de acionamento de um painel de LEDs com cerca de 1500W de potência.
  
+ ### #4
  E por fim, uma ventoinha representa os ventiladores que serão acionados caso uma determinada temperatura for atingida, fazendo duas funções, simultaneamente: 
  
  * Troca de temperatura por convexão forçada
  * Auxilio no movimento e troca de ar dentro da estufa (volume útil aproximado de 1m³) com o ambiente, melhorando a oxigenação, que é essencial para as plantas cultivadas.
+ 
+ O relé irá receber um sinal do Arduino e então, vai mudar a posição da chave de normalmente aberta para fechada, acionando ou desacionando a ventoinha.
+ 
+ ### #5
+ Este componente é o DHT11, um sensor de umidade relativa do ar e temperatura.
+ 
+ ### #6
+ Este é o HL-69, um sensor de umidade do solo.
+ 
+ ### #7
+ É um cabo USB, responsável pela comunicação via hardware entre o Arduino e o computador. Além disso, tambem pode servir como fonte de energia.
   
  O programa desenvolvido no Arduino, está disponível [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/blob/master/CodigoArduino/CodigoArduino.ino).
  
@@ -51,8 +65,8 @@ O código do software de serviço pode ser visto [aqui](https://github.com/ricar
  No banco de dados são salvos os dados oriundos da porta serial do Arduino, através do ColetorArduino. O mesmo, faz consultas no banco de dados, de modo a inserir informações na mesma porta serial, possibilitando a comunicação com o Arduino. Os dados que o software de serviço consulta, são salvos pelo sistema web (EngInt2) no banco de dados.
  
  ## Sistema web para controle total (EngInt2)
- O sistema EngInt2 faz consultas no banco de dados, mostrando ao usuário informações obtidas pelos sensores:bla, bla, bla, bla.
- Informações de configuração sobre a automação da estufa, que são: bla, bla, bla, são configuradas pelo usuário, através de uma página de confugurações que é habilitada ao clicar no botão "mostrar configurações". E logo após isso, são salvas no banco de dados.
+ O sistema EngInt2 faz consultas no banco de dados, mostrando ao usuário informações obtidas pelos sensores, que são: Temperatura, umidade relativa do ar, e umidade do solo.
+ Informações de configuração sobre a automação da estufa, que são: Status do sistema de exaustão, temperatura para iniciar ventilação, umidade para irrigação e tempos de permanência ligada ou desligada do sistema de iluminação, são configuradas pelo usuário, através de uma página de configurações que é habilitada ao clicar no botão "Editar configurações". E logo após isso, são salvas no banco de dados.
  
  Página inicial:
  
