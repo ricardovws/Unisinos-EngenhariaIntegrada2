@@ -1,10 +1,13 @@
 # Unisinos - Engenharia Integrada 2
 Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do curso de Engenharia Mecânica da Universidade do Vale dos Sinos.
 
- A proposta da disciplina é desenvolver uma solução envolvendo automação, aplicando os conhecimentos adquiridos até o momento no curso de engenharia mecânica. A solução proposta é uma estufa automatizada de cultivo indoor de hortaliças. Neste diretório, estarão contidos apenas a parte do projeto relativo aos softwares e ao hardware. As demais outras partes, como:
+ A proposta da disciplina é desenvolver uma solução envolvendo automação, aplicando os conhecimentos adquiridos até o momento no curso de engenharia mecânica. A solução proposta é uma estufa automatizada de cultivo indoor de hortaliças. Neste diretório, estarão contidos apenas a parte do projeto relativo ao controle e automação, como os softwares e o hardware. As demais outras partes, como:
  
 * #### Projeto térmico 
 * #### Projeto de irrigação
+* #### Projeto de ventilação
+* #### Projeto de exaustão
+* #### Projeto de iluminação
 
  Não estarão contidos aqui.
  
@@ -15,10 +18,11 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
  ![](imagens/sistema_basico.png)
  
  ## Arduino Uno
- O Arduino será responsável por hospedar todos os sensores e componentes de acionamento dos sistemas de irrigação, iluminação, ventilação e exaustão. Além disso, o seu microprocessador irá executar um programa que coleta os dados dos sensores e os envia para uma porta de comunicação serial. Através desta mesma porta serial, o programa também insere dados de entrada, fazendo com que os sistemas já citados, sejam acionados de forma individual. Como o Arduino dispõe de um cabo USB para comunicação por hardware, esse cabo é conectado em um computador, fazendo a comunicação entre ambos. Abaixo está o desenho do projeto de hardware do Arduino:
+ O Arduino será responsável por hospedar todos os sensores e componentes de acionamento dos sistemas de irrigação, iluminação, ventilação e exaustão. Além disso, o seu microprocessador irá executar um programa que coleta os dados dos sensores e os envia para uma porta de comunicação serial. Através desta mesma porta serial, o programa também recebe dados de entrada, fazendo com que os sistemas já citados, sejam acionados de forma individual. Como o Arduino dispõe de um cabo USB para comunicação por hardware, esse cabo é conectado em um computador, fazendo a comunicação entre ambos. Abaixo está o desenho do projeto de hardware do Arduino:
  
  ![](imagens/arduino__hardware.png)
  
+ //inserir legenda
  Para fins de protótipo, ao invés de um sistema de exaustão, foi instalado um LED branco, que quando acionado, representa um relé que controla um pequeno exaustor bivolt, com especificações aproximadas de: 
  
  * 150mm de diâmetro
@@ -42,7 +46,7 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
 O código do software de serviço pode ser visto [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/tree/master/ColetorArduino).
 
  ## Banco de dados 
- No banco de dados são salvos os dados oriundos da porta serial do Arduino, através do ColetorArduino. O mesmo, faz consultas no banco de dados, de modo a inserir informações na mesma porta serial, possibilitando a comunicação com o Arduino. Os dados que o software de serviço consulta, são salvos pelo sistema web para controle total no banco de dados.
+ No banco de dados são salvos os dados oriundos da porta serial do Arduino, através do ColetorArduino. O mesmo, faz consultas no banco de dados, de modo a inserir informações na mesma porta serial, possibilitando a comunicação com o Arduino. Os dados que o software de serviço consulta, são salvos pelo sistema web (EngInt2) no banco de dados.
  
  ## Sistema web para controle total (EngInt2)
  O sistema EngInt2 faz consultas no banco de dados, mostrando ao usuário informações obtidas pelos sensores:bla, bla, bla, bla.
@@ -56,6 +60,6 @@ O código do software de serviço pode ser visto [aqui](https://github.com/ricar
  
  ![](imagens/snapshot_2.PNG)
  
- A lógica que determina o tempo de ligado/desligado do sistema de iluminação, momento para ativar ou desativar o sistema de irrigação e ventilação, e acionar ou não o sistema de exaustão, está toda contida no código do EngInt2, que pode ser encontrado [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/tree/master/EngInt2).
+ A lógica que determina o tempo de ligado/desligado do sistema de iluminação, momento para ativar ou desativar o sistema de irrigação e ventilação, e acionar ou não o sistema de exaustão, está toda contida no código do EngInt2, que pode ser encontrado [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/tree/master/EngInt2). O sistema web salva no banco de dados o status de acionamento de cada sistema de forma individual. Assim, o status é lido pelo software de serviço, e enviado a portal serial do Arduino. O programa do Arduino recebe a informação e, muda o status do relé de acionamento de cada componente.
  
  
