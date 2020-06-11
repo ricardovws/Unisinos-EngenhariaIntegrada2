@@ -24,6 +24,7 @@ Projeto da disciplina de Engenharia Integrada II: Automação e Robótica, do cu
  
  //inserir legenda
  
+ ### #1
  Para fins de protótipo, ao invés de um sistema de exaustão, foi instalado um LED branco, que quando acionado, representa um relé que controla um pequeno exaustor bivolt, com especificações aproximadas de: 
  
  * 150mm de diâmetro
