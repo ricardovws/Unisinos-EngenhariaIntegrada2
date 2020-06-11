@@ -64,6 +64,7 @@ O código do software de serviço pode ser visto [aqui](https://github.com/ricar
  A lógica que determina o tempo de ligado/desligado do sistema de iluminação, momento para ativar ou desativar o sistema de irrigação e ventilação, e acionar ou não o sistema de exaustão, está toda contida no código do EngInt2, que pode ser encontrado [aqui](https://github.com/ricardovws/Unisinos-EngenhariaIntegrada2/tree/master/EngInt2). 
  
  O sistema web salva no banco de dados o status de acionamento de cada sistema de forma individual. Assim, o status é lido pelo software de serviço, e enviado a portal serial do Arduino. O programa do Arduino recebe a informação e, muda o status do relé de acionamento de cada componente.
+ 
  Este sistema web MVC foi desenvolvido na plataforma ASP.NET Core, utilizando Entity Framework para tratar com o banco de dados MySQL.
  
  
