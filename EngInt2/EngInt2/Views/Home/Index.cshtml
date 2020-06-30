@@ -18,8 +18,10 @@
 
             <p>Status do sistema de exaustão:</p>
 
-            <p>Temperatura para iniciar ventilação:</p>
+            <p>Temperatura para iniciar a ventilação:</p>
+            <p>Temperatura para terminar a ventilação:</p>
             <p>Umidade mínima do solo para iniciar irrigação:</p>
+            <p>Umidade mínima do solo para terminar irrigação:</p>
             <p>Tempo de iluminação ligada:</p>
             <p>Tempo de iluminação desligada:</p>
         </div>
@@ -57,16 +59,24 @@
         <hr />
         <div class="commandButton">
             <h3 class="color-component-g">Sistema de Ventilação (Ventoinha)</h3>
-            <label for="temp">Digite aqui a temperatura mínima para iniciar a ventilação:</label>
-            <input type="number" id="temp" name="temp" class="littleInput" /> °C<br />
+            <label for="temp">Digite aqui a temperatura para iniciar a ventilação:</label>
+            <input type="number" id="tempIniciar" name="temp" class="littleInput" /> °C<br />
+
+            <label for="temp">Digite aqui a temperatura para terminar a ventilação:</label>
+            <input type="number" id="tempTerminar" name="temp" class="littleInput" /> °C<br />
+
             <input class="btn btn-success btn-sm" type="submit" value="Salvar" id="Salvar_temp" />
             <p id="mensagemTempOk"></p>
         </div>
         <hr />
         <div>
             <h3 class="color-component-y">Sistema de Irrigação (LED Amarelo)</h3>
-            <label for="umi">Digite aqui a umidade mínima para iniciar a irrigação:</label>
-            <input type="number" id="umi" name="umi" class="littleInput" /> %<br />
+            <label for="umi">Digite aqui a umidade para iniciar a irrigação:</label>
+            <input type="number" id="umiIniciar" name="umi" class="littleInput" /> %<br />
+
+            <label for="umi">Digite aqui a umidade para terminar a irrigação:</label>
+            <input type="number" id="umiTerminar" name="umi" class="littleInput" /> %<br />
+
             <input class="btn btn-success btn-sm" type="submit" value="Salvar" id="Salvar_umi" />
             <p id="mensagemUmiOk"></p>
         </div>

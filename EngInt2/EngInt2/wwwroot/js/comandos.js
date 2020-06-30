@@ -47,18 +47,20 @@ $("#btn_w").click(function () {
 //Botão para salvar temperatura
 $("#Salvar_temp").click(function () {
     var url = "/Home/SalvarConfiguracaoTemperatura";
-    var temperatura = $("#temp").val();
-    $.post(url, { temperatura: temperatura });
-    $("#mensagemTempOk").html("Temperatura salva!").fadeIn(500)
+    var temperaturaIniciar = $("#tempIniciar").val();
+    var temperaturaTerminar = $("#tempTerminar").val();
+    $.post(url, { temperaturaIniciar: temperaturaIniciar, temperaturaTerminar: temperaturaTerminar });
+    $("#mensagemTempOk").html("Temperaturas salvas!").fadeIn(500)
         .delay(1000).fadeOut(500);
 });
 
 //Botão para salvar umidade
 $("#Salvar_umi").click(function () {
     var url = "/Home/SalvarConfiguracaoUmidade";
-    var umidade = $("#umi").val();
-    $.post(url, { umidade: umidade });
-    $("#mensagemUmiOk").html("Umidade salva!").fadeIn(500)
+    var umidadeIniciar = $("#umiIniciar").val();
+    var umidadeTerminar = $("#umiTerminar").val();
+    $.post(url, { umidadeIniciar: umidadeIniciar, umidadeTerminar: umidadeTerminar });
+    $("#mensagemUmiOk").html("Umidades salvas!").fadeIn(500)
         .delay(1000).fadeOut(500);
 });
 

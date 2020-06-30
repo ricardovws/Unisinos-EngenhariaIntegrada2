@@ -9,7 +9,9 @@ namespace EngInt2.Models
     {
         public int Id { get; set; }
         public int temperaturaIniciar { get; set; }
+        public int temperaturaTerminar { get; set; }
         public int umidadeIniciar { get; set; }
+        public int umidadeTerminar { get; set; }
 
 
         public bool statusReferencia { get; set; }

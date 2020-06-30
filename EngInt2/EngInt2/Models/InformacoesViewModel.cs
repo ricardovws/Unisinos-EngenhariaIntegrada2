@@ -18,7 +18,9 @@ namespace EngInt2.Models
         public StatusEnum Status4 { get; set; }
 
         public string TemperaturaIniciarVentilacao { get; set; }
+        public string TemperaturaTerminarVentilacao { get; set; }
         public string UmidadeIniciarIrrigacao { get; set; }
+        public string UmidadeTerminarIrrigacao { get; set; }
         public string TempoLigado { get; set; }
         public string TempoDesligado { get; set; }
     }

@@ -79,7 +79,7 @@ namespace ColetorArduino
                     //Atualiza Id
                     id++;
 
-                    //Pega a informação do banco e escreve na portal serial:
+                    //Pega a informação do banco e escreve na porta serial:
                     OrdenaAoArduino(connection, connectionString, serialPort);
 
 

@@ -51,15 +51,22 @@ namespace EngInt2.Controllers
                 viewModel.Status1 = _context.Comandos.FirstOrDefault(x => x.Id == 1).Status_Enum;
 
                 viewModel.TemperaturaIniciarVentilacao = _context.Configuracoes.FirstOrDefault().temperaturaIniciar.ToString() + " °C";
+                viewModel.TemperaturaTerminarVentilacao = _context.Configuracoes.FirstOrDefault().temperaturaTerminar.ToString() + " °C";
                 viewModel.UmidadeIniciarIrrigacao = _context.Configuracoes.FirstOrDefault().umidadeIniciar.ToString() + " %";
+                viewModel.UmidadeTerminarIrrigacao = _context.Configuracoes.FirstOrDefault().umidadeTerminar.ToString() + " %";
                 viewModel.TempoLigado = _context.Configuracoes.FirstOrDefault().tempoLigado.ToString() + " s";
                 viewModel.TempoDesligado = _context.Configuracoes.FirstOrDefault().tempoDesligado.ToString() + " s";
 
 
                 //Confere os dados do sensor e verifica se precisa acionar algum componente:
-                //Fazer método para melhorar esse código!!!
+                //Essa parte do código pode ser melhorada!!!
                 var comparar = _context.Configuracoes.First();
                 if (comparar.temperaturaIniciar <= int.Parse(info.Temperatura))
+                {
+                    MandaComando(4, "Ligado");
+                }
+                else if (comparar.temperaturaIniciar < int.Parse(info.Temperatura) &&
+                  int.Parse(info.Temperatura) <= comparar.temperaturaTerminar)
                 {
                     MandaComando(4, "Ligado");
                 }
@@ -68,10 +75,16 @@ namespace EngInt2.Controllers
                     MandaComando(4, "Desligado");
                 }
 
-                if(comparar.umidadeIniciar >= int.Parse(info.UmidadeSolo))
+                if (comparar.umidadeIniciar <= int.Parse(info.UmidadeSolo))
                 {
                     MandaComando(2, "Ligado");
                 }
+                else if (comparar.umidadeIniciar < int.Parse(info.UmidadeSolo) &&
+                    int.Parse(info.UmidadeSolo) <= comparar.umidadeTerminar)
+                {
+                    MandaComando(2, "Ligado");
+                }
+
                 else
                 {
                     MandaComando(2, "Desligado");
@@ -178,19 +191,21 @@ namespace EngInt2.Controllers
 
 
         [HttpPost]
-        public void SalvarConfiguracaoTemperatura(int temperatura)
+        public void SalvarConfiguracaoTemperatura(int temperaturaIniciar, int temperaturaTerminar)
         {
             var temp = _context.Configuracoes.FirstOrDefault();
-            temp.temperaturaIniciar = temperatura;
+            temp.temperaturaIniciar = temperaturaIniciar;
+            temp.temperaturaTerminar = temperaturaTerminar;
             _context.Configuracoes.Update(temp);
             _context.SaveChanges();
         }
 
         [HttpPost]
-        public void SalvarConfiguracaoUmidade(int umidade)
+        public void SalvarConfiguracaoUmidade(int umidadeIniciar, int umidadeTerminar)
         {
             var umi = _context.Configuracoes.FirstOrDefault();
-            umi.umidadeIniciar = umidade;
+            umi.umidadeIniciar = umidadeIniciar;
+            umi.umidadeTerminar = umidadeTerminar;
             _context.Configuracoes.Update(umi);
             _context.SaveChanges();
         }
